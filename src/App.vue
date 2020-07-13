@@ -1,28 +1,61 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <router-view></router-view>
+    <AppLoader />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppLoader from './components/Widgets/AppLoader';
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    AppLoader,
+  },
+  mounted() {
+    this.ImageProperty();
+  },
+  methods: {
+    ImageProperty() {
+      var ImgTag = document.querySelectorAll("img");
+      ImgTag.forEach(tag => {
+        tag.setAttribute("draggable", false);
+        tag.addEventListener("contextmenu", e => {
+          e.preventDefault();
+        });
+      });
+    }
   }
-}
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+body {
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  text-rendering: optimizeLegibility;
+  font-family: "Open Sans", sans-serif, Arial, Helvetica;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3, h4, h5, h6, p, span {
+  font-family: inherit;
 }
 </style>
