@@ -7,7 +7,7 @@ import VueAwesomeSwiper from 'vue-awesome-swiper';
 Vue.use(VueAwesomeSwiper);
 
 // import style
-import 'swiper/swiper-bundle.min.css';
+import 'swiper/css/swiper.min.css';
 
 Vue.config.productionTip = false;
 
